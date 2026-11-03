@@ -7,52 +7,36 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Registro ore">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#EDF1F3" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0F171C" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#000000">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-192.png">
 <style>
-:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+:root { color-scheme: dark; background: #000; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
 body { margin: 0; font: 14px system-ui, sans-serif; }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 /* Layout: colonna unica da telefono. Intestazione con striscia dei giorni, quadrante delle ore, elenco di commesse a righe con stepper, barra delle schede in basso. */
 :root {
-  --bg: #EDF1F3;
-  --surface: #FFFFFF;
-  --ink: #15222A;
-  --muted: #566772;
-  --line: #D3DBE0;
-  --accent: #0B6E7F;
-  --accent-ink: #FFFFFF;
-  --accent-soft: #D7ECEF;
-  --run: #B85A08;
-  --run-soft: #FBE6D2;
-  --ok: #2B7A4B;
-  --ok-soft: #DCEFE3;
-  --weekend: #E2E8EB;
-  --font-display: 'Barlow Semi Condensed', 'Arial Narrow', system-ui, sans-serif;
-  --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0F171C; --surface: #172229; --ink: #E7EEF1; --muted: #93A4AE; --line: #2B3A43;
-    --accent: #4FB6C6; --accent-ink: #082329; --accent-soft: #17343B;
-    --run: #F0954A; --run-soft: #3A2616; --ok: #5DBB86; --ok-soft: #173325; --weekend: #1E2B33;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0F171C; --surface: #172229; --ink: #E7EEF1; --muted: #93A4AE; --line: #2B3A43;
-  --accent: #4FB6C6; --accent-ink: #082329; --accent-soft: #17343B;
-  --run: #F0954A; --run-soft: #3A2616; --ok: #5DBB86; --ok-soft: #173325; --weekend: #1E2B33;
+  --bg: #000000;
+  --surface: #1C1C1E;
+  --raised: #2C2C2E;
+  --ink: #FFFFFF;
+  --muted: #8E8E93;
+  --line: #38383A;
+  --accent: #FF9F0A;
+  --accent-ink: #000000;
+  --accent-soft: #3A2706;
+  --run: #FF453A;
+  --run-soft: #3B1412;
+  --ok: #30D158;
+  --ok-soft: #0F3319;
+  --weekend: #121214;
+  --font-display: -apple-system, 'SF Pro Display', 'Helvetica Neue', system-ui, sans-serif;
+  --font-body: -apple-system, 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -252,6 +236,65 @@ body.noscroll { overflow: hidden; }
 #toast { position: fixed; left: 50%; bottom: calc(76px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); max-width: min(92vw, 420px); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 12px; font-size: 14px; z-index: 9; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
 .pend { position: fixed; left: 0; right: 0; bottom: calc(64px + env(safe-area-inset-bottom, 0px)); z-index: 6; display: flex; justify-content: center; padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)); }
 .pend .btn { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+
+/* Aspetto dell'app Orologio di Apple */
+html { background: #000; }
+body { font-family: var(--font-body); }
+.brand { align-items: flex-end; padding-top: 18px; }
+.brand h1 { font: 700 34px/1.1 var(--font-display); letter-spacing: -.01em; text-transform: none; color: var(--ink); }
+.brand h1 { white-space: nowrap; }
+.sync { font-size: 12px; white-space: nowrap; flex: none; }
+.daynav .icon, .monthnav .icon { background: var(--surface); border: 0; border-radius: 12px; color: var(--accent); }
+.dayname .dow { font: 600 24px/1.15 var(--font-display); }
+.dayname .date { font-size: 15px; }
+.sd { background: var(--surface); border: 0; border-radius: 12px; }
+.sd.we { background: transparent; border: 1px solid var(--line); }
+.sd b { font: 500 20px/1 var(--font-display); }
+.sd.today b { color: var(--accent); }
+.sd.sel { background: var(--accent); color: #000; }
+.sd.sel b, .sd.sel span { color: #000; }
+.big { font: 200 88px/1 var(--font-display); letter-spacing: -.03em; }
+.of { font-size: 17px; }
+.pill { background: var(--accent-soft); color: var(--accent); }
+.pill.ok { background: var(--ok-soft); color: var(--ok); }
+.pill.over { background: var(--run-soft); color: var(--run); }
+.bar { height: 6px; background: var(--raised); }
+.bar.full i { background: var(--ok); }
+.sec { font: 400 13px/1 var(--font-body); letter-spacing: 0; text-transform: uppercase; color: var(--muted); margin-top: 26px; }
+.list, .panel, .selectbtn, .facts, .empty { border: 0; background: var(--surface); border-radius: 12px; }
+.empty { border: 1px dashed var(--line); background: transparent; }
+.row + .row, .crow + .crow, .drow + .drow, .chk + .chk, li + li > .chk { border-top: .5px solid var(--line); }
+.facts div + div { border-left: .5px solid var(--line); }
+.facts dd { font: 300 34px/1.1 var(--font-display); letter-spacing: -.02em; }
+.btn { background: var(--raised); border: 0; color: #fff; border-radius: 12px; }
+.btn.primary { background: var(--accent); color: #000; }
+.btn.run { background: var(--run-soft); color: var(--run); }
+.panel .btn.primary[data-act="timer"] { background: var(--ok-soft); color: var(--ok); }
+.btn:disabled { opacity: .35; }
+.play { border: 0; background: var(--ok-soft); color: var(--ok); }
+.play.on { background: var(--run-soft); color: var(--run); }
+.step button { background: var(--raised); border: 0; color: var(--accent); }
+.val { font: 300 26px/1 var(--font-display); color: var(--muted); border-bottom: 0; }
+.val.on { color: var(--ink); }
+.chip { border: 0; background: var(--raised); color: var(--accent); }
+.field input, .custom input, .add input, .sheet-head input, .crow input { background: var(--raised); border: 0; border-radius: 10px; color: #fff; }
+.crow input { background: transparent; }
+.seg { background: var(--raised); border: 0; border-radius: 10px; }
+.seg button + button { border-left: .5px solid var(--line); }
+.seg button.on { background: var(--accent); color: #000; }
+.monthnav h2 { font: 700 28px/1.1 var(--font-display); }
+.dn { font: 500 18px/1 var(--font-display); }
+.dh { font-variant-numeric: tabular-nums; }
+.drow.we { background: var(--weekend); }
+.bt { background: var(--raised); }
+.running { background: var(--run-soft); }
+.running .dot { background: var(--run); }
+.sheet { background: var(--surface); }
+.pitem + .pitem { border-top: .5px solid var(--line); }
+.tabs { background: rgba(28, 28, 30, .82); -webkit-backdrop-filter: blur(24px) saturate(180%); backdrop-filter: blur(24px) saturate(180%); border-top: .5px solid var(--line); }
+.tabs button { font-size: 10px; }
+.tabs button[aria-current="page"] { color: var(--accent); }
+#toast { background: var(--raised); color: #fff; }
 </style>
 </head>
 <body>
@@ -571,7 +614,7 @@ if (typeof module !== 'undefined') module.exports = Core;
     return false;
   }
   function setSync(s) { S.sync = s; var el = $('.sync'); if (el) { el.dataset.s = s; el.textContent = syncText(); } }
-  function syncText() { return { loading: 'Carico…', pending: 'Salvo…', ok: 'Salvato', offline: 'Senza rete, riprovo', local: 'Solo su questo dispositivo' }[S.sync] || ''; }
+  function syncText() { return { loading: 'Carico…', pending: 'Salvo…', ok: 'Salvato', offline: 'Senza rete, riprovo', local: 'Sul telefono' }[S.sync] || ''; }
   function touchSettings() { S.settings.updatedAt = Date.now(); persist(SETTINGS_PATH, S.settings); }
   function touchMonth(ds) { var k = ds.slice(0, 7); getMonth(k).updatedAt = Date.now(); persist('months/' + k, S.months[k]); }
   function touchMonthKey(k) { getMonth(k).updatedAt = Date.now(); persist('months/' + k, S.months[k]); }
